@@ -150,7 +150,7 @@
 }
 
 .year {
-    color: var(--accent-glow);
+    color: var(--text-primary);
 }
 
 .separator {

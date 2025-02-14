@@ -53,7 +53,7 @@ const Contact = () => {
                             </div>
                             <div className="contact-info-text">
                                 <h3>Follow Us</h3>
-                                <a href="https://instagram.com/raveagenda" target="_blank" rel="noopener noreferrer" className="contact-link">
+                                <a href="https://instagram.com/raveagenda_groningen" target="_blank" rel="noopener noreferrer" className="contact-link">
                                     @raveagenda
                                 </a>
                             </div>

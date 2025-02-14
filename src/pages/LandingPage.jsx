@@ -45,10 +45,8 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      
       <div className="content-wrapper">
         <FilterSidebar />
-
         <div className="main-content">
           <div className="breadcrumb">
             Home / Netherlands / Groningen
@@ -57,7 +55,7 @@ const LandingPage = () => {
           <h1 className="city-title">GRONINGEN</h1>
 
           <section className="highlighted-events">
-            <h2>HIGHLIGHTED EVENTS</h2>
+            <h2>Highlighted Events</h2>
             <div className="event-carousel">
               {highlightedEvents.map((event, index) => (
                 <EventCard key={index} {...event} />

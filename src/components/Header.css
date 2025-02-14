@@ -40,20 +40,59 @@
 }
 
 .nav-select {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 43, 103, 0.2);
     color: var(--text-primary);
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1rem;
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
-    min-width: 140px;
+    width: 200px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 0.7em;
+    padding-right: 1.8rem;
 }
 
 .nav-select:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 43, 103, 0.4);
+}
+
+.nav-select:focus {
+    outline: none;
+    border-color: rgba(255, 43, 103, 0.6);
+    box-shadow: 0 0 0 2px rgba(255, 43, 103, 0.2);
+}
+
+.nav-select option {
+    background-color: #120418;
+    color: var(--text-primary);
+    padding: 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* Voor Webkit browsers (Chrome, Safari) */
+.nav-select::-webkit-scrollbar {
+    width: 8px;
+}
+
+.nav-select::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-select::-webkit-scrollbar-thumb {
+    background: rgba(255, 43, 103, 0.3);
+    border-radius: 4px;
+}
+
+.nav-select::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 43, 103, 0.5);
 }
 
 .search-input {
@@ -101,44 +140,97 @@
 
 @media (max-width: 768px) {
     .header {
-        padding: 1rem;
+        padding: 0.75rem;
+        height: auto;
     }
 
     .nav-links {
-        gap: 1rem;
+        gap: 0.75rem;
     }
 
     .search-input {
-        width: 180px;
+        width: 160px;
     }
 
     .nav-select {
-        min-width: 120px;
+        width: 160px;
+    }
+
+    .submit-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 640px) {
     .header {
-        height: auto;
-        padding: 1rem;
+        padding: 0.75rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+        text-align: center;
+        width: 100%;
+        margin: 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 43, 103, 0.2);
+        box-sizing: border-box;
     }
 
     .nav-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
         width: 100%;
-        flex-direction: column;
+        padding: 0 0.75rem;
+        box-sizing: border-box;
     }
 
-    .search-input {
-        width: 100%;
-    }
-
+    .nav-select,
+    .search-input,
     .submit-btn {
+        grid-column: 1 / -1;
         width: 100%;
-        text-align: center;
+        box-sizing: border-box;
     }
 
     .landing-page,
     .event-details-page {
-        padding-top: 140px;
+        padding-top: 220px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .nav-links {
+        padding: 0 0.5rem;
+    }
+
+    .nav-select,
+    .search-input,
+    .submit-btn {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .landing-page,
+    .event-details-page {
+        padding-top: 230px;
     }
 } 
