@@ -10,7 +10,6 @@ const Blog = () => {
             category: "History",
             date: "March 15, 2024",
             image: "https://images.unsplash.com/photo-1574434312346-9621a2be5b12?q=80&w=800",
-            readTime: "5 min read"
         },
         {
             id: 2,
@@ -19,7 +18,6 @@ const Blog = () => {
             category: "Venues",
             date: "March 10, 2024",
             image: "https://images.unsplash.com/photo-1571070703151-4f99616b198b?q=80&w=800",
-            readTime: "4 min read"
         },
         {
             id: 3,
@@ -28,7 +26,6 @@ const Blog = () => {
             category: "Artists",
             date: "March 5, 2024",
             image: "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?q=80&w=800",
-            readTime: "6 min read"
         },
         {
             id: 3,
@@ -37,7 +34,6 @@ const Blog = () => {
             category: "Artists",
             date: "March 5, 2024",
             image: "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?q=80&w=800",
-            readTime: "6 min read"
         },
         {
             id: 3,
@@ -46,7 +42,6 @@ const Blog = () => {
             category: "Artists",
             date: "March 5, 2024",
             image: "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?q=80&w=800",
-            readTime: "6 min read"
         },
         {
             id: 3,
@@ -55,7 +50,6 @@ const Blog = () => {
             category: "Artists",
             date: "March 5, 2024",
             image: "https://images.unsplash.com/photo-1516873240891-4bf014598ab4?q=80&w=800",
-            readTime: "6 min read"
         }
     ]
 
@@ -79,10 +73,6 @@ const Blog = () => {
                                     <span className="blog-date">
                                         <i className="far fa-calendar"></i>
                                         {post.date}
-                                    </span>
-                                    <span className="blog-read-time">
-                                        <i className="far fa-clock"></i>
-                                        {post.readTime}
                                     </span>
                                 </div>
                                 <h2>{post.title}</h2>
