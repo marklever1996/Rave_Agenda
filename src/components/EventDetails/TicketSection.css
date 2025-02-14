@@ -1,0 +1,47 @@
+.ticket-section {
+    background: var(--primary-gradient);
+    padding: 2rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.price-amount {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.buy-tickets-btn {
+    background: white;
+    color: black;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.buy-tickets-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .ticket-section {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+} 

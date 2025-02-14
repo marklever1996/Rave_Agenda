@@ -1,0 +1,47 @@
+.filters-sidebar {
+  background: rgba(18, 4, 24, 0.6);
+  padding: 1.5rem;
+  border-radius: 8px;
+  height: fit-content;
+  border: 1px solid var(--border-light);
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.price-inputs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.price-inputs input,
+.date-filter {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  color: var(--text-primary);
+}
+
+.filter-group label {
+  display: block;
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.filter-group input[type="checkbox"]:checked {
+  accent-color: #ff2b67;
+}
+
+@media (max-width: 1024px) {
+  .filters-sidebar {
+    display: none;
+  }
+} 

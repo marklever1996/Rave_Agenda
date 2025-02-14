@@ -1,0 +1,32 @@
+.location-info {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.venue-details h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.4rem;
+}
+
+.venue-details p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.directions-btn {
+    display: inline-block;
+    background: transparent;
+    border: 1px solid var(--border-light);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.directions-btn:hover {
+    background: rgba(255, 43, 103, 0.15);
+    border-color: #ff2b67;
+    box-shadow: 0 0 15px rgba(255, 43, 103, 0.3);
+} 
