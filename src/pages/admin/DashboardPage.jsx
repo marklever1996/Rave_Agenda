@@ -1,16 +1,20 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Sidebar from '../../components/admin/Sidebar'
 import './DashboardPage.css'
 
 const DashboardPage = () => {
-  // Voorbeeld data
-  const stats = {
-    totalEvents: 24,
-    highlightedEvents: 12,
-    totalBlogs: 8,
-    activeUsers: 156
-  }
+  const navigate = useNavigate()
+  // Login check; als de gebruiker niet is ingelogd, wordt hij doorgestuurd naar de login pagina
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+  const token = useSelector(state => state.auth.token)
+
+  useEffect(() => {
+    if (!isLoggedIn || !token) {
+      navigate('/login')
+    }
+  }, [isLoggedIn, token, navigate])
 
   const recentEvents = [
     { id: 1, title: 'NIGHT SHIFT', date: '2024-03-15', status: 'published' },
@@ -30,45 +34,14 @@ const DashboardPage = () => {
         <div className="dashboard-header">
           <h1>Dashboard</h1>
           <div className="action-buttons">
-            <Link to="/admin/events/create" className="create-button">
+            <Link to="/createEvent" className="create-button">
               <i className="fas fa-plus"></i>
               Nieuw Event
             </Link>
-            <Link to="/admin/blogs/create" className="create-button">
+            <Link to="/createBlog" className="create-button">
               <i className="fas fa-plus"></i>
               Nieuwe Blog
             </Link>
-          </div>
-        </div>
-
-        <div className="stats-grid">
-          <div className="stat-card">
-            <i className="fas fa-calendar"></i>
-            <div className="stat-info">
-              <h3>Totaal Events</h3>
-              <p>{stats.totalEvents}</p>
-            </div>
-          </div>
-          <div className="stat-card">
-            <i className="fas fa-star"></i>
-            <div className="stat-info">
-              <h3>Highlighted Events</h3>
-              <p>{stats.highlightedEvents}</p>
-            </div>
-          </div>
-          <div className="stat-card">
-            <i className="fas fa-newspaper"></i>
-            <div className="stat-info">
-              <h3>Blogs</h3>
-              <p>{stats.totalBlogs}</p>
-            </div>
-          </div>
-          <div className="stat-card">
-            <i className="fas fa-users"></i>
-            <div className="stat-info">
-              <h3>Active Users</h3>
-              <p>{stats.activeUsers}</p>
-            </div>
           </div>
         </div>
 
@@ -108,10 +81,6 @@ const DashboardPage = () => {
                     <h3>{blog.title}</h3>
                     <p>{new Date(blog.date).toLocaleDateString()}</p>
                   </div>
-                  <span className="views-badge">
-                    <i className="fas fa-eye"></i>
-                    {blog.views}
-                  </span>
                   <button className="edit-button">
                     <i className="fas fa-edit"></i>
                   </button>

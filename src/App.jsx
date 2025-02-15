@@ -10,8 +10,7 @@ import Footer from './components/Footer'
 
 import LoginPage from './pages/admin/LoginPage'
 import DashboardPage from './pages/admin/DashboardPage'
-// import EventsPage from './pages/admin/EventsPage'
-// import BlogsPage from './pages/admin/BlogsPage'
+import CreateEvent from './pages/admin/CreateEvent'
 
 // We maken een wrapper component die useLocation kan gebruiken
 function AppContent() {
@@ -30,8 +29,8 @@ function AppContent() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        {/* <Route path="/admin/events" element={<EventsPage />} />
-        <Route path="/admin/blogs" element={<BlogsPage />} /> */}
+        <Route path="/createEvent" element={<CreateEvent />} />
+      
       </Routes>
       {!isAdminRoute && <Footer />}
     </>
