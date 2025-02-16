@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { formatDate } from '../../utils/dateUtils'
 import './EventHero.css'
 
-const EventHero = ({ title, date, time, location, price, genres, image }) => {
-    // Split date into parts for better formatting
-    const [day, month, year] = date.split(' ')
-    
+const EventHero = ({ name, image, date, endDate, venue, location, genres }) => {
+    const genresList = genres || []
+
     return (
         <div className="event-hero">
             <Link to="/" className="back-button">
@@ -13,34 +13,36 @@ const EventHero = ({ title, date, time, location, price, genres, image }) => {
                 <span>Back</span>
             </Link>
             
-            <img src={image} alt={title} className="event-banner" />
+            <img 
+                src={image ? `${import.meta.env.VITE_API_URL}/uploads/events/${image}` : '/path/to/fallback/image.jpg'} 
+                alt={name} 
+                className="event-banner" 
+                onError={(e) => {
+                    console.error('Error loading image:', e);
+                    e.target.src = '/path/to/fallback/image.jpg';
+                }}
+            />
             
             <div className="event-overlay">
                 <div className="event-basic-info">
-                    
-                    <h1>{title}</h1>
+                    <h1>{name}</h1>
                     
                     <div className="event-quick-info">
                         <div className="info-item">
                             <i className="fas fa-calendar-alt"></i>
-                            <span>{day} {month} {year}</span>
-                        </div>
-                        <div className="info-item">
-                            <i className="far fa-clock"></i>
-                            <span>{time}</span>
+                            <span>
+                                {formatDate(date)}
+                                {endDate && ` - ${formatDate(endDate)}`}
+                            </span>
                         </div>
                         <div className="info-item">
                             <i className="fas fa-map-marker-alt"></i>
                             <span>{location}</span>
                         </div>
-                        <div className="info-item">
-                            <i className="fas fa-ticket-alt"></i>
-                            <span>{price}</span>
-                        </div>
                     </div>
                     
                     <div className="genre-tags">
-                        {genres.map((genre, index) => (
+                        {genresList.map((genre, index) => (
                             <span key={index} className="tag">
                                 <i className="fas fa-music"></i>
                                 {genre}

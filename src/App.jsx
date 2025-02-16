@@ -22,8 +22,8 @@ function AppContent() {
       {!isAdminRoute && <Header />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        {/* Event Details; dit moet vervangen worden door id */}
-        <Route path="/event-details" element={<EventDetails />} />
+        {/* Update de event-details route om het ID te accepteren */}
+        <Route path="/events/:id" element={<EventDetails />} />
         <Route path="/submit-event" element={<SubmitEvent />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import axios from 'axios'
 import EventHero from '../components/EventDetails/EventHero'
 import TicketSection from '../components/EventDetails/TicketSection'
 import LineupSection from '../components/EventDetails/LineupSection'
@@ -11,64 +12,67 @@ import '../pages/EventDetails.css'
 import '../styles/global.css'
 
 const EventDetails = () => {
-    const { id } = useParams()
-    
-    // Mock data (later te vervangen door API call)
-    const eventData = {
-        title: "PARADIGM FESTIVAL",
-        date: "10 AUG 2024",
-        time: "22:00 - 08:00",
-        venue: "Suikerunie",
-        location: "Energieweg 10, Groningen",
-        price: "€45",
-        ticketLink: "https://tickets.example.com",
-        description: "Experience the ultimate underground electronic music festival in the industrial heart of Groningen. Paradigm Festival returns with a carefully curated lineup of international artists and local talents across multiple stages.",
-        genres: ["Techno", "House", "Industrial", "Minimal"],
-        lineup: [
-            "Ben Klock",
-            "Amelie Lens",
-            "Charlotte de Witte",
-            "Marcel Dettmann",
-            "Nina Kraviz",
-            "Jeff Mills"
-        ],
-        facilities: [
-            "Free parking",
-            "Food trucks",
-            "Lockers",
-            "First aid",
-            "Water points"
-        ]
-    }
+    const [event, setEvent] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const { id } = useParams();
+
+    useEffect(() => {
+        const fetchEvent = async () => {
+            try {
+                setLoading(true);
+                const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/events/${id}`);
+                console.log('Event data:', response.data);
+                setEvent(response.data);
+                setError(null);
+            } catch (err) {
+                setError(err.response?.data?.error || 'Er is een fout opgetreden');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchEvent();
+    }, [id]);
+
+    if (loading) return <div>Loading...</div>;
+    if (error) return <div>Error: {error}</div>;
+    if (!event) return <div>Event niet gevonden</div>;
 
     return (
         <div className="event-details-page">
             
             <EventHero 
-                {...eventData} 
-                image={ParadigmFestival}
+                name={event.name}
+                image={event.image}
+                date={event.startDate}
+                endDate={event.endDate}
+                venue={event.venue}
+                location={event.location}
+                genres={event.genres}
             />
 
             <div className="event-content">
                 <div className="main-details">
                     <TicketSection 
-                        price={eventData.price}
-                        ticketLink={eventData.ticketLink}
+                        minPrice={event.minPrice}
+                        maxPrice={event.maxPrice}
+                        ticketLink={event.ticketLink}
                     />
 
                     <section className="event-section">
                         <h2>ABOUT THE EVENT</h2>
-                        <p>{eventData.description}</p>
+                        <p>{event.description}</p>
                     </section>
 
-                    <LineupSection lineup={eventData.lineup} />
+                    <LineupSection lineup={event.lineUp} />
                     
                     <LocationSection 
-                        venue={eventData.venue}
-                        location={eventData.location}
+                        venue={event.venue}
+                        location={event.location}
                     />
                     
-                    <FacilitiesSection facilities={eventData.facilities} />
+                    <FacilitiesSection facilities={event.facilities} />
                 </div>
 
                 <aside className="event-sidebar">

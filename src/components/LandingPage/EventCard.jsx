@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom'
 import './EventCard.css'
 
-const EventCard = ({ date, image, title, venue, tags, location, id = 1 }) => {
+const EventCard = ({ date, image, title, venue, tags, location, id }) => {
   const navigate = useNavigate()
 
   return (
-    <div className="event-card" onClick={() => navigate(`/event-details`)}> 
+    <div className="event-card" onClick={() => navigate(`/events/${id}`)}> 
       <div className="event-image">
         <img src={image} alt={title} />
         <div className="event-date-badge">{date}</div>

@@ -1,10 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './EventListItem.css'
 
-const EventListItem = ({ day, date, month, image, title, time, genre, location }) => {
-  return (
-    <div className="event-item">
+const EventListItem = ({ day, date, month, image, title, time, genre, location, id }) => {
+  const navigate = useNavigate()
+
+    return (
+    <div className="event-item" onClick={() => navigate(`/events/${id}`)}>
       <div className="date-box">
         <span className="day">{day}</span>
         <span className="date">{date}</span>
